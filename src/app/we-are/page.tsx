@@ -18,16 +18,17 @@ export default function HelloWorld() {
         <header className="text-center mb-12">
           <div className="mb-8">
             <MorphingText
+              delayTime={1}
               texts={morphingTexts}
               className="text-white drop-shadow-2xl mt-4"
             />
           </div>
         </header>
         <section className="bg-white/5 rounded-3xl p-8 mb-12 shadow-2xl">
-          <h2 className="text-4xl font-bold text-blue-800 mb-6 text-center">
+          <h2 className="text-5xl font-bold text-blue-800 mb-6 text-center">
             🌊 Chúng tôi là ai 🌊
           </h2>
-          <p className="text-lg text-amber-50 leading-relaxed text-center max-w-4xl mx-auto">
+          <p className="text-3xl text-amber-50 leading-relaxed text-center max-w-4xl mx-auto">
             Blue Whale - một nhóm gồm 11 thành viên tài năng và nhiệt huyết!
             Giống như những chú cá voi xanh khổng lồ trong đại dương, chúng tôi
             tin vào sức mạnh của sự đoàn kết và khả năng thích ứng. Chúng tôi
