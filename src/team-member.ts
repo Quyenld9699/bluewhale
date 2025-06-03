@@ -1,13 +1,13 @@
 import { StaticImageData } from "next/image";
-import Bach from "@/public/images/Bach.jpeg";
-import Dat from "@/public/images/Dat.jpg";
-import Duc from "@/public/images/Duc.jpg";
-import Hai from "@/public/images/Hai.jpg";
-import Hang from "@/public/images/Hang.jpg";
-import Hanh from "@/public/images/Hanh.jpg";
-import Hien from "@/public/images/Hien.png";
-import Hiep from "@/public/images/Hiep.jpg";
-import Lan from "@/public/images/Lan.jpg";
+import Bach from "public/images/Bach.jpeg";
+import Dat from "public/images/Dat.jpg";
+import Duc from "public/images/Duc.jpg";
+import Hai from "public/images/Hai.jpg";
+import Hang from "public/images/Hang.jpg";
+import Hanh from "public/images/Hanh.jpg";
+import Hien from "public/images/Hien.png";
+import Hiep from "public/images/Hiep.jpg";
+import Lan from "public/images/Lan.jpg";
 
 interface TeamMember {
   id: number;

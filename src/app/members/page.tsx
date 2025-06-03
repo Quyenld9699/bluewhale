@@ -1,6 +1,6 @@
 "use client";
 
-import { teamMembers } from "@/team-member";
+import { teamMembers } from "src/team-member";
 
 export default function MembersPage() {
   console.log("🚀 ~ teamMembers:", teamMembers);

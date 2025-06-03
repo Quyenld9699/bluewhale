@@ -1,12 +1,10 @@
 "use client";
 
-import { useRouter } from "next/navigation";
+import Image from "next/image";
+import { teamMembers } from "src/team-member";
 import "./ocean-animations.scss";
-import { teamMembers } from "@/team-member";
 
 export default function Home() {
-  const router = useRouter();
-
   return (
     <div className="min-h-screen relative overflow-hidden">
       {/* Ocean depth background with realistic gradient */}
@@ -65,7 +63,6 @@ export default function Home() {
           <div
             key={member.id}
             className="team-whale-swimming"
-            onClick={() => router.push(`/members`)}
             style={{
               top: `${10 + ((index * 7) % 70)}%`,
               animationDelay: `${index * 2}s`,
@@ -74,21 +71,35 @@ export default function Home() {
           >
             {/* Whale body */}
             <div className="relative inline-block">
-              <span className="text-6xl drop-shadow-xl">🐋</span>
+              <div className="rotate-y-180">
+                <span className="text-6xl drop-shadow-xl">🐋</span>
+              </div>
+
               {/* Member avatar on whale */}
-              <div className="absolute top-1/2 left-1/2.5 transform -translate-x-1/2 -translate-y-1/2 text-xl bg-white/10 rounded-full p-1 shadow-lg">
+              <div className="absolute top-1/2 left-1/2.5 transform -translate-x-1/2 -translate-y-1/2 text-lg bg-white/10 rounded-full p-1 shadow-lg">
                 {member.avatar}
               </div>
+
               {/* Bubble trail */}
               {/* <div className="absolute -right-6 top-1/2 transform -translate-y-1/2">
                 <span className="bubble-trail">💭</span>
               </div> */}
             </div>
-
-            {/* Member info tooltip */}
+            {/* Member info tooltip */}{" "}
             <div className="whale-tooltip absolute top-full left-1/2 transform -translate-x-1/2 mt-2 bg-white/95 rounded-lg px-3 py-2 text-sm shadow-xl border border-blue-200 opacity-0 transition-all duration-300 whitespace-nowrap z-30">
-              <div className="font-bold text-blue-800">{member.name}</div>
-              <div className="text-blue-600">{member.role}</div>
+              <div className="font-bold text-blue-800 text-center">
+                {member.name}
+              </div>
+              <div className="text-blue-600 text-center">{member.role}</div>
+              <div className="flex justify-center">
+                <Image
+                  src={member.image}
+                  alt={member.name}
+                  width={100}
+                  height={100}
+                  className="object-cover mt-2"
+                />
+              </div>
             </div>
           </div>
         ))}
