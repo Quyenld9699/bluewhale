@@ -1,33 +1,11 @@
 "use client";
 
+import { useRouter } from "next/navigation";
 import "./ocean-animations.scss";
-
-interface TeamMember {
-  id: number;
-  name: string;
-  role: string;
-  avatar: string;
-}
+import { teamMembers } from "@/team-member";
 
 export default function Home() {
-  const teamMembers: TeamMember[] = [
-    { id: 1, name: "Trịnh Tuấn Đạt!", role: "Team Leader", avatar: "🚀" },
-    { id: 2, name: "Lê Đình Quyền", role: "DevOps", avatar: "🍻" },
-    { id: 3, name: "Nguyễn Huy Hải", role: "Developer", avatar: "⚡" },
-    { id: 4, name: "Trần Trọng Hiệp", role: "Developer", avatar: "🔥" },
-    { id: 5, name: "Trần Thanh Hằng", role: "DevOps", avatar: "💎" },
-    { id: 6, name: "Lê Đức Hiển", role: "Developer", avatar: "🌟" },
-    { id: 7, name: "Phan Mỹ Hạnh", role: "Marketing Generalist", avatar: "🎭" },
-    {
-      id: 8,
-      name: "Nguyễn Phương Lan",
-      role: "Marketing Generalist",
-      avatar: "🎉",
-    },
-    { id: 9, name: "Trần Mạnh Đức", role: "Designer", avatar: "🎨" },
-    { id: 10, name: "Phạm Minh Tuấn", role: "Developer", avatar: "♿️" },
-    { id: 11, name: "Trương Gia Bách", role: "Developer", avatar: "🔊" },
-  ];
+  const router = useRouter();
 
   return (
     <div className="min-h-screen relative overflow-hidden">
@@ -87,6 +65,7 @@ export default function Home() {
           <div
             key={member.id}
             className="team-whale-swimming"
+            onClick={() => router.push(`/members`)}
             style={{
               top: `${10 + ((index * 7) % 70)}%`,
               animationDelay: `${index * 2}s`,
@@ -95,12 +74,11 @@ export default function Home() {
           >
             {/* Whale body */}
             <div className="relative inline-block">
-              <span className="text-5xl drop-shadow-xl">🐋</span>
+              <span className="text-6xl drop-shadow-xl">🐋</span>
               {/* Member avatar on whale */}
-              <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-lg bg-white/90 rounded-full p-1 border-2 border-blue-300 shadow-lg">
+              <div className="absolute top-1/2 left-1/2.5 transform -translate-x-1/2 -translate-y-1/2 text-xl bg-white/10 rounded-full p-1 shadow-lg">
                 {member.avatar}
               </div>
-
               {/* Bubble trail */}
               {/* <div className="absolute -right-6 top-1/2 transform -translate-y-1/2">
                 <span className="bubble-trail">💭</span>

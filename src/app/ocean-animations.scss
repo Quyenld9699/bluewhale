@@ -357,6 +357,7 @@
     transform: scale(1.2);
     filter: drop-shadow(0 0 25px rgba(59, 130, 246, 1));
     z-index: 30;
+    animation-play-state: paused;
 
     .whale-tooltip {
       opacity: 1;
