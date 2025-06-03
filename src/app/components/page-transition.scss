@@ -1,4 +1,3 @@
-/* Page Transition Styles */
 .page-transition-loader {
   position: fixed;
   z-index: 9999;
@@ -83,19 +82,17 @@
   opacity: 0;
 }
 
-/* Enhanced blue gradient for ocean theme */
 .loader__tile {
   background: linear-gradient(
     135deg,
     #00bfff 0%,
-    /* Deep Sky Blue */ #007ae5 25%,
-    /* Ocean Blue */ #0056b3 50%,
-    /* Deep Blue */ #003d82 75%,
-    /* Navy Blue */ #001f3f 100% /* Deep Navy */
+    #007ae5 25%,
+    #0056b3 50%,
+    #003d82 75%,
+    #001f3f 100%
   );
 }
 
-/* Add subtle wave effect to tiles */
 @keyframes wave-effect {
   0%,
   100% {
@@ -110,7 +107,6 @@
   animation: wave-effect 0.7s ease-in-out;
 }
 
-/* Stagger the wave animation */
 .loader--active .loader__tile--1 {
   animation-delay: 0s;
 }

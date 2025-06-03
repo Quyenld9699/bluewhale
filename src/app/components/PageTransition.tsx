@@ -12,20 +12,17 @@ export default function PageTransition({ children }: PageTransitionProps) {
   const pathname = usePathname();
 
   useEffect(() => {
-    // Trigger transition when pathname changes
     setIsTransitioning(true);
 
-    // Remove transition after animation completes
     const timer = setTimeout(() => {
       setIsTransitioning(false);
-    }, 1400); // Total animation duration
+    }, 1400);
 
     return () => clearTimeout(timer);
   }, [pathname]);
 
   return (
     <>
-      {/* Page Transition Loader */}
       <div
         className={`page-transition-loader ${
           isTransitioning ? "loader--active" : ""

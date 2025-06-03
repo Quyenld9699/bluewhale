@@ -16,10 +16,10 @@ export default function HelloWorld() {
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-b from-blue-400 via-blue-600 to-blue-900">
       <div className="relative z-10 container mx-auto px-4 py-8">
         <header className="text-center mb-12">
-          <div className="mb-8">            <MorphingText
+          <div className="mb-8">
+            <MorphingText
               texts={morphingTexts}
               className="text-white drop-shadow-2xl mt-4"
-              delayTime={2} // 2 seconds delay between text changes
             />
           </div>
         </header>

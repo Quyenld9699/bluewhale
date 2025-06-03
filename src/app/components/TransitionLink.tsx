@@ -22,12 +22,10 @@ export default function TransitionLink({
   const handleClick = (e: MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
 
-    // Call custom onClick if provided
     if (onClick) {
       onClick(e);
     }
 
-    // Navigate with transition
     navigateWithTransition(href);
   };
 

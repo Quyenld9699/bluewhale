@@ -9,23 +9,19 @@ import { motion } from "framer-motion";
 export default function Home() {
   return (
     <div className="min-h-screen relative overflow-hidden">
-      {/* Ocean depth background with realistic gradient */}
       <div className="absolute inset-0 bg-gradient-to-b from-cyan-200 to-slate-900"></div>
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-blue-500 to-transparent opacity-60"></div>
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-blue-800 to-slate-900 opacity-80"></div>
-      {/* Underwater light rays */}
       <div className="absolute inset-0 opacity-30">
         <div className="light-ray light-ray-1"></div>
         <div className="light-ray light-ray-2"></div>
         <div className="light-ray light-ray-3"></div>
       </div>
-      {/* Ocean waves animation */}
       <div className="absolute inset-0 opacity-20">
         <div className="wave wave1"></div>
         <div className="wave wave2"></div>
         <div className="wave wave3"></div>
       </div>
-      {/* Enhanced floating bubbles */}
       <div className="bubbles">
         {[...Array(30)].map((_, i) => (
           <div key={i} className={`bubble bubble-${i + 1}`}>
@@ -56,9 +52,7 @@ export default function Home() {
           ease: "easeOut",
         }}
       >
-        {" "}
         <div className="waviy text-9xl font-bold text-white drop-shadow-2xl">
-          {/* Blue Whale text with wavy animation */}
           <span style={{ "--i": 1 } as React.CSSProperties}>B</span>
           <span style={{ "--i": 2 } as React.CSSProperties}>l</span>
           <span style={{ "--i": 3 } as React.CSSProperties}>u</span>
@@ -76,17 +70,13 @@ export default function Home() {
           <span style={{ "--i": 15 } as React.CSSProperties}>m</span>
         </div>
       </motion.div>
-      {/* Swimming whales */}
       <div className="absolute inset-0">
         <div className="whale whale-1 active">🐋</div>
         <div className="whale whale-2">🐋</div>
         <div className="whale whale-3">🐋</div>
       </div>
-      {/* Team member whales swimming freely in the ocean */}
       <div className="absolute inset-0 z-5">
-        {" "}
         {teamMembers.map((member, index) => {
-          // Calculate positioning to avoid tooltip overflow
           const topPosition = 10 + ((index * 7) % 70);
           const isNearTop = topPosition < 25;
           const isNearBottom = topPosition > 65;
@@ -109,13 +99,11 @@ export default function Home() {
               whileHover="hover"
               initial="initial"
             >
-              {/* Whale body */}
               <div className="relative inline-block">
                 <div className="rotate-y-180">
                   <span className="text-6xl drop-shadow-xl">🐋</span>
                 </div>
 
-                {/* Member avatar with animation */}
                 <motion.div
                   className="absolute top-1/2 left-1/2.5 transform -translate-x-1/2 -translate-y-1/2 text-lg bg-white/10 rounded-full p-1 shadow-lg"
                   variants={{
@@ -138,8 +126,7 @@ export default function Home() {
                 >
                   {member.avatar}
                 </motion.div>
-              </div>{" "}
-              {/* Member info tooltip */}
+              </div>
               <div className="whale-tooltip absolute bg-white/95 rounded-xl px-8 py-5 text-lg shadow-2xl border border-blue-200 opacity-0 transition-all duration-300 z-30">
                 <div className="font-bold text-blue-800 text-center text-xl mb-2 whitespace-nowrap">
                   {member.name}
@@ -155,7 +142,7 @@ export default function Home() {
                     height={150}
                     className="object-cover mt-2 rounded-lg"
                   />
-                </div>{" "}
+                </div>
               </div>
             </motion.div>
           );
@@ -163,10 +150,10 @@ export default function Home() {
       </div>
       <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20">
         <TransitionLink
-          href="/hello"
+          href="/we-are"
           className="inline-block opacity-30 px-8 py-4 bg-blue-500/10 backdrop-blur-sm hover:bg-blue-600/10 hover:opacity-100 text-white font-semibold rounded-xl transition-all duration-300 transform hover:scale-105 hover:shadow-2xl border border-blue-400/50"
         >
-          🌊 Visit HelloWorld Page 🐋
+          🌊 Visit Blue Whale Page 🐋
         </TransitionLink>
       </div>
     </div>
