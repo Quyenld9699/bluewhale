@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { teamMembers } from "src/team-member";
 import "./ocean-animations.scss";
 import { motion } from "framer-motion";
@@ -242,9 +243,16 @@ export default function Home() {
               <p className="mb-4 animate-pulse">🐋 Ẩn mình để lớn mạnh 🐋</p>
               <p className="animate-pulse">🐋 Đổi mới để dẫn đầu 🐋</p>
             </div>
-          </div>
-        </section> */}
+          </div>        </section> */}
       {/* </div> */}
+      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20">
+        <Link
+          href="/hello"
+          className="inline-block opacity-30 px-8 py-4 bg-blue-500/10 backdrop-blur-sm hover:bg-blue-600/10 hover:opacity-100 text-white font-semibold rounded-xl transition-all duration-300 transform hover:scale-105 hover:shadow-2xl border border-blue-400/50"
+        >
+          🌊 Visit HelloWorld Page 🐋
+        </Link>
+      </div>
     </div>
   );
 }
