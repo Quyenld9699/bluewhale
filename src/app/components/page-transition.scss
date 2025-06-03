@@ -1,0 +1,128 @@
+/* Page Transition Styles */
+.page-transition-loader {
+  position: fixed;
+  z-index: 9999;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 100vh;
+  transition: width 0s 1.4s ease;
+  pointer-events: none;
+}
+
+.page-transition-loader.loader--active {
+  width: 100%;
+  transition-delay: 0s;
+}
+
+.loader__tile {
+  position: absolute;
+  left: 0;
+  width: 0;
+  height: 20%;
+  background: linear-gradient(135deg, #007ae5 0%, #0056b3 50%, #003d82 100%);
+  transition: width 0.7s ease;
+  box-shadow: 0 0 20px rgba(0, 122, 229, 0.3);
+}
+
+.loader__tile--1 {
+  top: 0%;
+  transition-delay: 0s;
+}
+
+.loader__tile--2 {
+  top: 20%;
+  transition-delay: 0.2s;
+}
+
+.loader__tile--3 {
+  top: 40%;
+  transition-delay: 0.4s;
+}
+
+.loader__tile--4 {
+  top: 60%;
+  transition-delay: 0.6s;
+}
+
+.loader__tile--5 {
+  top: 80%;
+  transition-delay: 0.8s;
+}
+
+.loader--active .loader__tile {
+  width: 100%;
+}
+
+.loader--active .loader__tile--1 {
+  transition-delay: 0s;
+}
+
+.loader--active .loader__tile--2 {
+  transition-delay: 0.2s;
+}
+
+.loader--active .loader__tile--3 {
+  transition-delay: 0.4s;
+}
+
+.loader--active .loader__tile--4 {
+  transition-delay: 0.6s;
+}
+
+.loader--active .loader__tile--5 {
+  transition-delay: 0.8s;
+}
+
+/* Page Content Animation */
+.page-content {
+  transition: opacity 0.3s ease;
+}
+
+.page-content--hidden {
+  opacity: 0;
+}
+
+/* Enhanced blue gradient for ocean theme */
+.loader__tile {
+  background: linear-gradient(
+    135deg,
+    #00bfff 0%,
+    /* Deep Sky Blue */ #007ae5 25%,
+    /* Ocean Blue */ #0056b3 50%,
+    /* Deep Blue */ #003d82 75%,
+    /* Navy Blue */ #001f3f 100% /* Deep Navy */
+  );
+}
+
+/* Add subtle wave effect to tiles */
+@keyframes wave-effect {
+  0%,
+  100% {
+    transform: scaleY(1);
+  }
+  50% {
+    transform: scaleY(1.05);
+  }
+}
+
+.loader--active .loader__tile {
+  animation: wave-effect 0.7s ease-in-out;
+}
+
+/* Stagger the wave animation */
+.loader--active .loader__tile--1 {
+  animation-delay: 0s;
+}
+.loader--active .loader__tile--2 {
+  animation-delay: 0.1s;
+}
+.loader--active .loader__tile--3 {
+  animation-delay: 0.2s;
+}
+.loader--active .loader__tile--4 {
+  animation-delay: 0.3s;
+}
+.loader--active .loader__tile--5 {
+  animation-delay: 0.4s;
+}
