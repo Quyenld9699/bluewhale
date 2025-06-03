@@ -358,10 +358,9 @@
     filter: drop-shadow(0 0 25px rgba(59, 130, 246, 1));
     z-index: 30;
     animation-play-state: paused;
-
     .whale-tooltip {
       opacity: 1;
-      transform: translateX(-50%) translateY(0) scale(1.1);
+      transform: translateX(-50%) translateY(0) scale(1.3);
     }
   }
 }
@@ -407,175 +406,132 @@
   transition: all 0.3s ease;
 }
 
-.team-whale-swimming:hover .whale-tooltip {
+// Tooltip positioning variants to prevent overflow
+.tooltip-default .whale-tooltip {
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-top: 12px;
+}
+
+.tooltip-above .whale-tooltip {
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-bottom: 12px;
+  margin-top: 0;
+}
+
+.tooltip-below .whale-tooltip {
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-top: 12px;
+}
+
+// Handle horizontal overflow for tooltips near screen edges
+.team-whale-swimming {
+  &:nth-child(-n + 3) .whale-tooltip {
+    // For whales near left edge - position tooltip to the right
+    left: 0;
+    transform: translateX(0);
+  }
+
+  &:nth-last-child(-n + 3) .whale-tooltip {
+    // For whales near right edge - position tooltip to the left
+    left: auto;
+    right: 0;
+    transform: translateX(0);
+  }
+}
+
+// Enhanced hover effects with better positioning
+.tooltip-default:hover .whale-tooltip {
   opacity: 1;
+  transform: translateX(-50%) scale(1.3);
 }
 
-// Bubble trail effects
-.bubble-trail {
-  animation: bubbleFloat 3s infinite ease-in-out;
+.tooltip-above:hover .whale-tooltip {
+  opacity: 1;
+  transform: translateX(-50%) scale(1.3);
+}
+
+.tooltip-below:hover .whale-tooltip {
+  opacity: 1;
+  transform: translateX(-50%) scale(1.3);
+}
+
+// Handle edge case positioning on hover
+.team-whale-swimming:nth-child(-n + 3):hover .whale-tooltip {
+  transform: translateX(0) scale(1.3);
+}
+
+.team-whale-swimming:nth-last-child(-n + 3):hover .whale-tooltip {
+  transform: translateX(0) scale(1.3);
+}
+
+// Ensure tooltips are responsive to content width
+.whale-tooltip {
+  width: max-content;
+  max-width: 90vw; // Prevent overflow on small screens
+  white-space: nowrap;
+
+  // Allow text to display in single lines
+  .font-bold {
+    white-space: nowrap;
+    overflow: visible;
+  }
+
+  // Responsive adjustments for smaller screens
+  @media (max-width: 768px) {
+    max-width: 85vw;
+    font-size: 0.9rem;
+    // padding: 1rem;
+
+    img {
+      width: 120px !important;
+      height: 120px !important;
+    }
+  }
+
+  @media (max-width: 480px) {
+    max-width: 80vw;
+    font-size: 0.8rem;
+    // padding: 0.75rem;
+
+    img {
+      width: 100px !important;
+      height: 100px !important;
+    }
+  }
+}
+
+// Wavy text animation for Blue Whale title
+.waviy {
+  position: relative;
+  -webkit-box-reflect: below -20px linear-gradient(transparent, rgba(0, 0, 0, 0.2));
+  font-size: 60px;
+}
+
+.waviy span {
+  font-family: inherit;
+  position: relative;
   display: inline-block;
-  opacity: 0.7;
+  color: #fff;
+  text-transform: uppercase;
+  animation: waviy 2s ease-in-out infinite;
+  animation-delay: calc(0.1s * var(--i));
 }
 
-@keyframes bubbleFloat {
-  0%,
-  100% {
-    transform: translateY(0) scale(0.8);
-    opacity: 0.3;
-  }
-  50% {
-    transform: translateY(-20px) scale(1.2);
-    opacity: 0.8;
-  }
-}
-
-// Water splash effects
-// .team-whale-swimming::before {
-//     content: "💧";
-//     position: absolute;
-//     top: -20px;
-//     left: -10px;
-//     font-size: 1rem;
-//     animation: splash 2s infinite ease-in-out;
-//     opacity: 0.6;
-// }
-
-// .team-whale-swimming::after {
-//     content: "〰️";
-//     position: absolute;
-//     top: 50%;
-//     left: -30px;
-//     transform: translateY(-50%) rotate(90deg);
-//     font-size: 1.5rem;
-//     opacity: 0.4;
-//     animation: tail 1.5s infinite ease-in-out;
-// }
-
-@keyframes splash {
-  0%,
-  100% {
-    transform: translateY(0) scale(0.8);
-    opacity: 0;
-  }
-  50% {
-    transform: translateY(-15px) scale(1.2);
-    opacity: 0.8;
-  }
-}
-
-@keyframes tail {
-  0%,
-  100% {
-    transform: translateY(-50%) rotate(85deg) scale(1);
-  }
-  50% {
-    transform: translateY(-50%) rotate(95deg) scale(1.1);
-  }
-}
-
-// Ocean current effects
-.ocean-current-global {
-  position: absolute;
-  width: 300px;
-  height: 1px;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(135, 206, 250, 0.3),
-    rgba(99, 179, 237, 0.5),
-    transparent
-  );
-  animation: globalCurrent 10s infinite ease-in-out;
-  left: -300px;
-}
-
-@keyframes globalCurrent {
+@keyframes waviy {
   0% {
-    transform: translateX(0) scaleX(0.5);
-    opacity: 0;
+    transform: translateY(0);
   }
   20% {
-    opacity: 0.6;
-    transform: translateX(20vw) scaleX(1);
+    transform: translateY(-30px);
   }
-  80% {
-    opacity: 0.6;
-    transform: translateX(80vw) scaleX(1);
-  }
+  40%,
   100% {
-    transform: translateX(calc(100vw + 300px)) scaleX(0.5);
-    opacity: 0;
+    transform: translateY(0);
   }
-}
-
-// Individual team member whale animations with different speeds
-.team-whale-swimming:nth-child(1) {
-  animation-duration: 20s;
-  animation-delay: 0s;
-  top: 10%;
-}
-.team-whale-swimming:nth-child(2) {
-  animation-duration: 25s;
-  animation-delay: 2s;
-  top: 17%;
-}
-.team-whale-swimming:nth-child(3) {
-  animation-duration: 22s;
-  animation-delay: 4s;
-  top: 24%;
-}
-.team-whale-swimming:nth-child(4) {
-  animation-duration: 27s;
-  animation-delay: 6s;
-  top: 31%;
-}
-.team-whale-swimming:nth-child(5) {
-  animation-duration: 23s;
-  animation-delay: 8s;
-  top: 38%;
-}
-.team-whale-swimming:nth-child(6) {
-  animation-duration: 26s;
-  animation-delay: 10s;
-  top: 45%;
-}
-.team-whale-swimming:nth-child(7) {
-  animation-duration: 21s;
-  animation-delay: 12s;
-  top: 52%;
-}
-.team-whale-swimming:nth-child(8) {
-  animation-duration: 28s;
-  animation-delay: 14s;
-  top: 59%;
-}
-.team-whale-swimming:nth-child(9) {
-  animation-duration: 24s;
-  animation-delay: 16s;
-  top: 66%;
-}
-.team-whale-swimming:nth-child(10) {
-  animation-duration: 29s;
-  animation-delay: 18s;
-  top: 73%;
-}
-.team-whale-swimming:nth-child(11) {
-  animation-duration: 25s;
-  animation-delay: 20s;
-  top: 80%;
-}
-
-@keyframes waving {
-  0%,
-  100% {
-    transform: skewX(0deg);
-  }
-  50% {
-    transform: skewX(10deg);
-  }
-}
-
-.waving {
-  animation: waving 2s infinite ease-in-out;
 }
