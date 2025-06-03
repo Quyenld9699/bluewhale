@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { teamMembers } from "src/team-member";
 import "./ocean-animations.scss";
+import { motion } from "framer-motion";
 
 export default function Home() {
   return (
@@ -11,21 +12,18 @@ export default function Home() {
       <div className="absolute inset-0 bg-gradient-to-b from-cyan-200 to-slate-900"></div>
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-blue-500 to-transparent opacity-60"></div>
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-blue-800 to-slate-900 opacity-80"></div>
-
       {/* Underwater light rays */}
       <div className="absolute inset-0 opacity-30">
         <div className="light-ray light-ray-1"></div>
         <div className="light-ray light-ray-2"></div>
         <div className="light-ray light-ray-3"></div>
       </div>
-
       {/* Ocean waves animation */}
       <div className="absolute inset-0 opacity-20">
         <div className="wave wave1"></div>
         <div className="wave wave2"></div>
         <div className="wave wave3"></div>
       </div>
-
       {/* Enhanced floating bubbles */}
       <div className="bubbles">
         {[...Array(30)].map((_, i) => (
@@ -34,7 +32,6 @@ export default function Home() {
           </div>
         ))}
       </div>
-
       {/* Ocean current lines throughout the screen */}
       <div className="absolute inset-0 pointer-events-none z-1">
         {[...Array(8)].map((_, i) => (
@@ -49,25 +46,38 @@ export default function Home() {
           ></div>
         ))}
       </div>
-
+      <motion.div
+        className="absolute inset-0 flex items-center justify-center z-0"
+        initial={{ y: "-100%", opacity: 0 }}
+        animate={{ y: 0, opacity: 0.09 }}
+        transition={{
+          duration: 5,
+          ease: "easeOut",
+        }}
+      >
+        <div className="text-8xl font-bold text-white drop-shadow-2xl">
+          Blue Whale
+        </div>
+      </motion.div>
       {/* Swimming whales */}
       <div className="absolute inset-0">
         <div className="whale whale-1 active">🐋</div>
         <div className="whale whale-2">🐋</div>
         <div className="whale whale-3">🐋</div>
       </div>
-
       {/* Team member whales swimming freely in the ocean */}
       <div className="absolute inset-0 z-5">
         {teamMembers.map((member, index) => (
-          <div
+          <motion.div
             key={member.id}
-            className="team-whale-swimming"
+            className="team-whale-swimming group"
             style={{
               top: `${10 + ((index * 7) % 70)}%`,
               animationDelay: `${index * 2}s`,
               animationDuration: `${20 + (index % 4) * 5}s`,
             }}
+            whileHover="hover"
+            initial="initial"
           >
             {/* Whale body */}
             <div className="relative inline-block">
@@ -75,22 +85,39 @@ export default function Home() {
                 <span className="text-6xl drop-shadow-xl">🐋</span>
               </div>
 
-              {/* Member avatar on whale */}
-              <div className="absolute top-1/2 left-1/2.5 transform -translate-x-1/2 -translate-y-1/2 text-lg bg-white/10 rounded-full p-1 shadow-lg">
+              {/* Member avatar with animation */}
+              <motion.div
+                className="absolute top-1/2 left-1/2.5 transform -translate-x-1/2 -translate-y-1/2 text-lg bg-white/10 rounded-full p-1 shadow-lg"
+                variants={{
+                  initial: {
+                    x: "-50%",
+                    y: "-50%",
+                    scale: 1,
+                  },
+                  hover: {
+                    x: "calc(80px)",
+                    y: "calc(50px)",
+                    scale: 1.2,
+                    transition: {
+                      type: "spring",
+                      stiffness: 300,
+                      damping: 25,
+                    },
+                  },
+                }}
+              >
                 {member.avatar}
-              </div>
-
-              {/* Bubble trail */}
-              {/* <div className="absolute -right-6 top-1/2 transform -translate-y-1/2">
-                <span className="bubble-trail">💭</span>
-              </div> */}
+              </motion.div>
             </div>
-            {/* Member info tooltip */}{" "}
+
+            {/* Member info tooltip */}
             <div className="whale-tooltip absolute top-full left-1/2 transform -translate-x-1/2 mt-2 bg-white/95 rounded-lg px-3 py-2 text-sm shadow-xl border border-blue-200 opacity-0 transition-all duration-300 whitespace-nowrap z-30">
               <div className="font-bold text-blue-800 text-center">
                 {member.name}
               </div>
-              <div className="text-blue-600 text-center">{member.role}</div>
+              <div className="text-blue-600 text-center relative">
+                {member.role}
+              </div>
               <div className="flex justify-center">
                 <Image
                   src={member.image}
@@ -101,10 +128,9 @@ export default function Home() {
                 />
               </div>
             </div>
-          </div>
+          </motion.div>
         ))}
       </div>
-
       {/* Main content */}
       {/* <div className="relative z-10 container mx-auto px-4 py-8"> */}
       {/* Header */}
@@ -117,7 +143,6 @@ export default function Home() {
             <p>🐋 Đổi mới để dẫn đầu 🐋</p>
           </div>
         </header> */}
-
       {/* Team introduction */}
       {/* <section className="bg-white/5 rounded-3xl p-8 mb-12 shadow-2xl">
           <h2 className="text-4xl font-bold text-blue-800 mb-6 text-center">
@@ -133,7 +158,6 @@ export default function Home() {
             được những mục tiêu cao nhất!
           </p>
         </section> */}
-
       {/* Team members title */}
       {/* <section className="text-center mb-8">
           <h2 className="text-5xl font-bold text-white drop-shadow-2xl animate-pulse">
@@ -143,7 +167,6 @@ export default function Home() {
             11 thành viên tài năng đang bơi lội trong đại dương tri thức
           </p>
         </section> */}
-
       {/* Illustrations section */}
       {/* <section className="bg-white/5 rounded-3xl p-8 mb-12 shadow-2xl">
           <h2 className="text-4xl font-bold text-blue-800 mb-8 text-center">
@@ -180,7 +203,6 @@ export default function Home() {
             </div>
           </div>
         </section> */}
-
       {/* Slogan section */}
       {/* <section className="text-center">
           <div className="bg-gradient-to-r from-blue-700/30 via-blue-800/30 to-slate-800 rounded-3xl p-12 shadow-2xl">
