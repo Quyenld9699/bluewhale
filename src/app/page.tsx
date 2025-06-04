@@ -116,7 +116,7 @@ export default function Home() {
                     🐋
                   </motion.span>
                   <motion.span
-                    className="text-6xl drop-shadow-xl absolute inset-0 flex items-center justify-center"
+                    className="text-6xl drop-shadow-xl absolute inset-0 flex items-center justify-center animate-spin"
                     variants={{
                       initial: {
                         opacity: 0,
@@ -169,9 +169,7 @@ export default function Home() {
                   <Image
                     src={member.image}
                     alt={member.name}
-                    width={150}
-                    height={150}
-                    className="object-cover rounded-lg"
+                    className="object-cover rounded-lg w-[160px] h-[160px] shadow-lg"
                   />
                 </div>
               </div>

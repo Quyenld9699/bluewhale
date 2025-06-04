@@ -44,14 +44,14 @@ export const teamMembers: TeamMember[] = [
   {
     id: 3,
     name: "Nguyễn Huy Hải",
-    role: "Developer",
+    role: "Among us",
     avatar: hai,
     image: Hai,
   },
   {
     id: 4,
     name: "Trần Trọng Hiệp",
-    role: "Developer",
+    role: "Giọng ca vàng",
     avatar: hiep,
     image: Hiep,
   },
@@ -81,7 +81,7 @@ export const teamMembers: TeamMember[] = [
   {
     id: 10,
     name: "Phạm Minh Tuấn",
-    role: "Developer",
+    role: "Tàn nhưng phế",
     avatar: tuan,
     image: Tuan,
   },

@@ -349,6 +349,7 @@
   cursor: pointer;
   z-index: 5;
   transition: transform 0.3s ease;
+  opacity: 0;
 
   &:hover {
     transform: scale(1.2);
@@ -405,14 +406,14 @@
 
 .tooltip-default .whale-tooltip {
   top: 100%;
-  left: 50%;
+  right: 50%;
   transform: translateX(-50%);
   margin-top: 12px;
 }
 
 .tooltip-above .whale-tooltip {
   bottom: 100%;
-  left: 50%;
+  right: 50%;
   transform: translateX(-50%);
   margin-bottom: 12px;
   margin-top: 0;
@@ -420,46 +421,46 @@
 
 .tooltip-below .whale-tooltip {
   top: 100%;
-  left: 50%;
+  right: 50%;
   transform: translateX(-50%);
   margin-top: 12px;
 }
 
-.team-whale-swimming {
-  &:nth-child(-n + 3) .whale-tooltip {
-    left: 0;
-    transform: translateX(0);
-  }
+// .team-whale-swimming {
+//   &:nth-child(-n + 3) .whale-tooltip {
+//     right: 50%;
+//     transform: translateX(0);
+//   }
 
-  &:nth-last-child(-n + 3) .whale-tooltip {
-    left: auto;
-    right: 0;
-    transform: translateX(0);
-  }
-}
+//   &:nth-last-child(-n + 3) .whale-tooltip {
+//     left: auto;
+//     right: 50%;
+//     transform: translateX(0);
+//   }
+// }
 
-.tooltip-default:hover .whale-tooltip {
-  opacity: 1;
-  transform: translateX(-50%) scale(1.3);
-}
+// .tooltip-default:hover .whale-tooltip {
+//   opacity: 1;
+//   transform: translateX(-50%) scale(1.3);
+// }
 
-.tooltip-above:hover .whale-tooltip {
-  opacity: 1;
-  transform: translateX(-50%) scale(1.3);
-}
+// .tooltip-above:hover .whale-tooltip {
+//   opacity: 1;
+//   transform: translateX(-50%) scale(1.3);
+// }
 
-.tooltip-below:hover .whale-tooltip {
-  opacity: 1;
-  transform: translateX(-50%) scale(1.3);
-}
+// .tooltip-below:hover .whale-tooltip {
+//   opacity: 1;
+//   transform: translateX(-50%) scale(1.3);
+// }
 
-.team-whale-swimming:nth-child(-n + 3):hover .whale-tooltip {
-  transform: translateX(0) scale(1.3);
-}
+// .team-whale-swimming:nth-child(-n + 3):hover .whale-tooltip {
+//   transform: translateX(0) scale(1.3);
+// }
 
-.team-whale-swimming:nth-last-child(-n + 3):hover .whale-tooltip {
-  transform: translateX(0) scale(1.3);
-}
+// .team-whale-swimming:nth-last-child(-n + 3):hover .whale-tooltip {
+//   transform: translateX(0) scale(1.3);
+// }
 
 .whale-tooltip {
   width: max-content;
