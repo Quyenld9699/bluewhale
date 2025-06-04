@@ -1,7 +1,9 @@
 import TransitionLink from "../components/TransitionLink";
 import MorphingText from "../components/MorphingText";
+import TypewriterText from "../components/TypewriterText";
+import "../components/typewriter.scss";
 
-export default function HelloWorld() {
+export default function WeAre() {
   const morphingTexts = [
     "🐋 Blue Whale 🐋",
     "Ẩn mình để lớn mạnh",
@@ -11,6 +13,15 @@ export default function HelloWorld() {
     "Sáng tạo không giới hạn",
     "Blue Whale Team!",
   ];
+
+  const descriptionText =
+    "Blue Whale - một nhóm gồm 11 thành viên tài năng và nhiệt huyết! " +
+    "Giống như những chú cá voi xanh khổng lồ trong đại dương, chúng tôi " +
+    "tin vào sức mạnh của sự đoàn kết và khả năng thích ứng. Chúng tôi " +
+    '"ẩn mình để lớn mạnh" - không ngừng học hỏi và phát triển ' +
+    'bản thân, đồng thời "đổi mới để dẫn đầu" - luôn tìm kiếm ' +
+    "những ý tưởng sáng tạo để vượt qua thử thách và đạt được những mục " +
+    "tiêu cao nhất!";
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-b from-blue-400 via-blue-600 to-blue-900">
@@ -23,20 +34,30 @@ export default function HelloWorld() {
               className="text-white drop-shadow-2xl mt-4"
             />
           </div>
-        </header>
+        </header>{" "}
         <section className="bg-white/5 rounded-3xl p-8 mb-12 shadow-2xl">
           <h2 className="text-5xl font-bold text-blue-800 mb-6 text-center">
             🌊 Chúng tôi là ai 🌊
-          </h2>
-          <p className="text-3xl text-amber-50 leading-relaxed text-center max-w-4xl mx-auto">
-            Blue Whale - một nhóm gồm 11 thành viên tài năng và nhiệt huyết!
-            Giống như những chú cá voi xanh khổng lồ trong đại dương, chúng tôi
-            tin vào sức mạnh của sự đoàn kết và khả năng thích ứng. Chúng tôi
-            &quot;ẩn mình để lớn mạnh&quot; - không ngừng học hỏi và phát triển
-            bản thân, đồng thời &quot;đổi mới để dẫn đầu&quot; - luôn tìm kiếm
-            những ý tưởng sáng tạo để vượt qua thử thách và đạt được những mục
-            tiêu cao nhất!
-          </p>
+          </h2>{" "}
+          <div className="text-3xl text-amber-50 leading-relaxed text-center max-w-4xl mx-auto">
+            <TypewriterText
+              text={descriptionText}
+              speed={10}
+              delay={1500}
+              className="typewriter-text"
+              showCursor={true}
+              cursorChar="🐋"
+              highlightPhrases={[
+                "Blue Whale",
+                "ẩn mình để lớn mạnh",
+                "đổi mới để dẫn đầu",
+                "11 thành viên",
+                "cá voi xanh khổng lồ",
+                "đoàn kết",
+                "thích ứng",
+              ]}
+            />
+          </div>
         </section>
         {/* <section className="text-center mb-8">
           <h2 className="text-5xl font-bold text-white drop-shadow-2xl animate-pulse">
