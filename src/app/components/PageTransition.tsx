@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { usePathname } from "next/navigation";
 
 interface PageTransitionProps {
   children: React.ReactNode;
@@ -9,16 +8,37 @@ interface PageTransitionProps {
 
 export default function PageTransition({ children }: PageTransitionProps) {
   const [isTransitioning, setIsTransitioning] = useState(false);
-  const pathname = usePathname();
+
   useEffect(() => {
-    setIsTransitioning(true);
+    // Listen for custom transition events triggered by navigation
+    const handleTransitionStart = () => {
+      setIsTransitioning(true);
+    };
 
-    const timer = setTimeout(() => {
-      setIsTransitioning(false);
-    }, 1000); // Increased from 1000ms to 2000ms to see the content better
+    const handleTransitionEnd = () => {
+      const timer = setTimeout(() => {
+        setIsTransitioning(false);
+      }, 1000);
 
-    return () => clearTimeout(timer);
-  }, [pathname]);
+      return () => clearTimeout(timer);
+    };
+
+    // Listen for route change completion
+    const handleRouteChangeComplete = () => {
+      handleTransitionEnd();
+    };
+
+    window.addEventListener("transitionStart", handleTransitionStart);
+    window.addEventListener("routeChangeComplete", handleRouteChangeComplete);
+
+    return () => {
+      window.removeEventListener("transitionStart", handleTransitionStart);
+      window.removeEventListener(
+        "routeChangeComplete",
+        handleRouteChangeComplete
+      );
+    };
+  }, []);
 
   return (
     <>
