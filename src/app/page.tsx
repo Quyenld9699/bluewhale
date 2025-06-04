@@ -158,11 +158,11 @@ export default function Home() {
                   />
                 </motion.div>
               </div>
-              <div className="whale-tooltip absolute bg-white/95 rounded-xl px-8 py-5 text-lg shadow-2xl border border-blue-200 opacity-0 transition-all duration-300 z-30">
-                <div className="font-bold text-blue-800 text-center text-xl mb-2 whitespace-nowrap">
+              <div className="whale-tooltip absolute bg-white/95 rounded-xl px-2 py-2 text-lg shadow-2xl border border-blue-200 opacity-0 transition-all duration-300 z-30">
+                <div className="font-bold text-blue-800 text-center text-xl whitespace-nowrap">
                   {member.name}
                 </div>
-                <div className="text-blue-600 text-center relative text-lg mb-3 whitespace-nowrap">
+                <div className="text-blue-600 text-center relative text-lg whitespace-nowrap">
                   {member.role}
                 </div>
                 <div className="flex justify-center">
@@ -171,7 +171,7 @@ export default function Home() {
                     alt={member.name}
                     width={150}
                     height={150}
-                    className="object-cover mt-2 rounded-lg"
+                    className="object-cover rounded-lg"
                   />
                 </div>
               </div>

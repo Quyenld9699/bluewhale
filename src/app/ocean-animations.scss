@@ -463,7 +463,6 @@
 
 .whale-tooltip {
   width: max-content;
-  max-width: 90vw;
   white-space: nowrap;
 
   .font-bold {
@@ -472,7 +471,6 @@
   }
 
   @media (max-width: 768px) {
-    max-width: 85vw;
     font-size: 0.9rem;
 
     img {
@@ -482,7 +480,6 @@
   }
 
   @media (max-width: 480px) {
-    max-width: 80vw;
     font-size: 0.8rem;
 
     img {
