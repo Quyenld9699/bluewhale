@@ -10,13 +10,12 @@ interface PageTransitionProps {
 export default function PageTransition({ children }: PageTransitionProps) {
   const [isTransitioning, setIsTransitioning] = useState(false);
   const pathname = usePathname();
-
   useEffect(() => {
     setIsTransitioning(true);
 
     const timer = setTimeout(() => {
       setIsTransitioning(false);
-    }, 1000);
+    }, 1000); // Increased from 1000ms to 2000ms to see the content better
 
     return () => clearTimeout(timer);
   }, [pathname]);
@@ -28,13 +27,27 @@ export default function PageTransition({ children }: PageTransitionProps) {
           isTransitioning ? "loader--active" : ""
         }`}
       >
-        <div className="loader__tile loader__tile--1"></div>
-        <div className="loader__tile loader__tile--2"></div>
-        <div className="loader__tile loader__tile--3"></div>
-        <div className="loader__tile loader__tile--4"></div>
-        <div className="loader__tile loader__tile--5"></div>
+        <div className="loader__tile loader__tile--1">
+          <span className="tile-emoji">🐳</span>
+          <span className="tile-text">W</span>
+        </div>
+        <div className="loader__tile loader__tile--2">
+          <span className="tile-emoji">🐋</span>
+          <span className="tile-text">H</span>
+        </div>
+        <div className="loader__tile loader__tile--3">
+          <span className="tile-emoji">🐳</span>
+          <span className="tile-text">A</span>
+        </div>
+        <div className="loader__tile loader__tile--4">
+          <span className="tile-emoji">🐋</span>
+          <span className="tile-text">L</span>
+        </div>
+        <div className="loader__tile loader__tile--5">
+          <span className="tile-emoji">🐳</span>
+          <span className="tile-text">E</span>
+        </div>
       </div>
-
       {/* Page Content */}
       <div
         className={`page-content ${
