@@ -6,13 +6,13 @@ import "./morphing-text.scss";
 interface MorphingTextProps {
   texts: string[];
   className?: string;
-  delayTime?: number; // Delay time in seconds between text changes
+  delayTime?: number;
 }
 
 export default function MorphingText({
   texts,
   className = "",
-  delayTime = 0.25, // Default delay time
+  delayTime = 0.25,
 }: MorphingTextProps) {
   const text1Ref = useRef<HTMLSpanElement>(null);
   const text2Ref = useRef<HTMLSpanElement>(null);
@@ -24,8 +24,9 @@ export default function MorphingText({
     const elts = {
       text1: text1Ref.current,
       text2: text2Ref.current,
-    };    const morphTime = 1;
-    const cooldownTime = delayTime; // Use the delayTime prop instead of hardcoded value
+    };
+    const morphTime = 1;
+    const cooldownTime = delayTime;
 
     let textIndex = texts.length - 1;
     let time = new Date();
@@ -92,7 +93,7 @@ export default function MorphingText({
       }
     }
 
-    animate();    //NOTE:  Cleanup or shit will happen
+    animate(); //NOTE:  Cleanup or shit will happen
     return () => {
       if (animationRef.current) {
         cancelAnimationFrame(animationRef.current);

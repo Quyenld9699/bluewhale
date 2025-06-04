@@ -10,7 +10,6 @@ export function usePageTransition() {
     (href: string) => {
       if (pathname === href) return;
 
-      // Dispatch custom event to trigger transition
       window.dispatchEvent(new CustomEvent("transitionStart"));
 
       const loader = document.querySelector(".page-transition-loader");
@@ -20,7 +19,6 @@ export function usePageTransition() {
 
       setTimeout(() => {
         router.push(href);
-        // Dispatch event when route change is complete
         setTimeout(() => {
           window.dispatchEvent(new CustomEvent("routeChangeComplete"));
         }, 100);

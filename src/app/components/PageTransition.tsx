@@ -10,7 +10,6 @@ export default function PageTransition({ children }: PageTransitionProps) {
   const [isTransitioning, setIsTransitioning] = useState(false);
 
   useEffect(() => {
-    // Listen for custom transition events triggered by navigation
     const handleTransitionStart = () => {
       setIsTransitioning(true);
     };
@@ -23,7 +22,6 @@ export default function PageTransition({ children }: PageTransitionProps) {
       return () => clearTimeout(timer);
     };
 
-    // Listen for route change completion
     const handleRouteChangeComplete = () => {
       handleTransitionEnd();
     };
