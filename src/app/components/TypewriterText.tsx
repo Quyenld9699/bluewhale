@@ -51,12 +51,10 @@ export default function TypewriterText({
 
       return () => clearTimeout(timer);
     } else if (!isCompleted) {
-      // Typing completed
       setIsCompleted(true);
       if (onComplete) {
         onComplete();
       }
-      // Keep cursor blinking for a bit, then hide it
       const cursorTimer = setTimeout(() => {
         setShowBlinkingCursor(false);
       }, 3000);
@@ -64,7 +62,6 @@ export default function TypewriterText({
     }
   }, [currentIndex, text, speed, hasStarted, onComplete, isCompleted]);
 
-  // Function to highlight specific phrases
   const renderTextWithHighlights = (text: string) => {
     if (highlightPhrases.length === 0) return text;
 
