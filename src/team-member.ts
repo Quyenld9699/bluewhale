@@ -8,6 +8,7 @@ import Hanh from "public/images/Hanh.jpg";
 import Hien from "public/images/Hien.png";
 import Hiep from "public/images/Hiep.jpg";
 import Lan from "public/images/Lan.jpg";
+import Quyen from "public/images/Quyen.jpg";
 
 interface TeamMember {
   id: number;
@@ -25,7 +26,7 @@ export const teamMembers: TeamMember[] = [
     avatar: "🚀",
     image: Dat,
   },
-  { id: 2, name: "Lê Đình Quyền", role: "DevOps", avatar: "🍻", image: Bach },
+  { id: 2, name: "Lê Đình Quyền", role: "DevOps", avatar: "🍻", image: Quyen },
   {
     id: 3,
     name: "Nguyễn Huy Hải",
