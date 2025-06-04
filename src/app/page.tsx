@@ -99,7 +99,6 @@ export default function Home() {
               whileHover="hover"
               initial="initial"
             >
-              {" "}
               <div className="relative inline-block">
                 <div className="rotate-y-180">
                   <motion.span
@@ -155,7 +154,7 @@ export default function Home() {
                   <Image
                     src={member.avatar}
                     alt={member.name}
-                    className="rounded-full w-[40px] h-[40px] object-cover"
+                    className="rounded-full object-cover w-[40px] h-[40px] shadow-lg"
                   />
                 </motion.div>
               </div>
