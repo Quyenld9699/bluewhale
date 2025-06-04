@@ -124,7 +124,11 @@ export default function Home() {
                     },
                   }}
                 >
-                  {member.avatar}
+                  <Image
+                    src={member.avatar}
+                    alt={member.name}
+                    className="rounded-full w-[40px] h-[40px] object-cover"
+                  />
                 </motion.div>
               </div>
               <div className="whale-tooltip absolute bg-white/95 rounded-xl px-8 py-5 text-lg shadow-2xl border border-blue-200 opacity-0 transition-all duration-300 z-30">
