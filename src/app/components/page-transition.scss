@@ -1,0 +1,264 @@
+.page-transition-loader {
+  position: fixed;
+  z-index: 9999;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 100vh;
+  transition: width 0s 2s ease; /* Updated timing to match component */
+  pointer-events: none;
+}
+
+.page-transition-loader.loader--active {
+  width: 100%;
+  transition-delay: 0s;
+}
+
+.loader__tile {
+  position: absolute;
+  left: 0;
+  width: 0;
+  height: 20%;
+  background: linear-gradient(
+    135deg,
+    #00bfff 0%,
+    #007ae5 25%,
+    #0056b3 50%,
+    #003d82 75%,
+    #001f3f 100%
+  );
+  transition: width 0.7s ease;
+  box-shadow: 0 0 20px rgba(0, 122, 229, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 4rem;
+  color: white;
+  text-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+  overflow: hidden;
+}
+
+.loader__tile::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  transition: left 1s ease;
+}
+
+.loader--active .loader__tile {
+  width: 100%;
+}
+
+.loader--active .loader__tile--1 {
+  transition-delay: 0s;
+}
+
+.loader--active .loader__tile--2 {
+  transition-delay: 0.2s;
+}
+
+.loader--active .loader__tile--3 {
+  transition-delay: 0.4s;
+}
+
+.loader--active .loader__tile--4 {
+  transition-delay: 0.6s;
+}
+
+.loader--active .loader__tile--5 {
+  transition-delay: 0.8s;
+}
+
+.loader--active .loader__tile::before {
+  left: 100%;
+}
+
+.loader__tile--1 {
+  top: 0%;
+  transition-delay: 0s;
+}
+
+.loader__tile--2 {
+  top: 20%;
+  transition-delay: 0.2s;
+}
+
+.loader__tile--3 {
+  top: 40%;
+  transition-delay: 0.4s;
+}
+
+.loader__tile--4 {
+  top: 60%;
+  transition-delay: 0.6s;
+}
+
+.loader__tile--5 {
+  top: 80%;
+  transition-delay: 0.8s;
+}
+
+/* Page Content Animation */
+.page-content {
+  transition: opacity 0.3s ease;
+}
+
+.page-content--hidden {
+  opacity: 0;
+}
+
+@keyframes wave-effect {
+  0%,
+  100% {
+    transform: scaleY(1);
+  }
+  50% {
+    transform: scaleY(1.05);
+  }
+}
+
+.loader--active .loader__tile {
+  animation: wave-effect 0.7s ease-in-out;
+}
+
+.loader--active .loader__tile--1 {
+  animation-delay: 0s;
+}
+.loader--active .loader__tile--2 {
+  animation-delay: 0.1s;
+}
+.loader--active .loader__tile--3 {
+  animation-delay: 0.2s;
+}
+.loader--active .loader__tile--4 {
+  animation-delay: 0.3s;
+}
+.loader--active .loader__tile--5 {
+  animation-delay: 0.4s;
+}
+
+.tile-emoji {
+  font-size: 3rem;
+  margin-right: 1rem;
+  animation: float 2s ease-in-out infinite;
+  text-shadow: 0 0 15px rgba(135, 206, 235, 0.8);
+}
+
+.tile-text {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: white;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  letter-spacing: 1px;
+  opacity: 0;
+  transform: translateX(-20px);
+  transition: all 0.5s ease;
+}
+
+.loader--active .tile-text {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.loader__tile--1 .tile-text {
+  transition-delay: 0.2s;
+}
+
+.loader__tile--2 .tile-text {
+  transition-delay: 0.4s;
+}
+
+.loader__tile--3 .tile-text {
+  transition-delay: 0.6s;
+}
+
+.loader__tile--4 .tile-text {
+  transition-delay: 0.8s;
+}
+
+.loader__tile--5 .tile-text {
+  transition-delay: 1s;
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+/* Ocean wave effect for loader background */
+.page-transition-loader::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(
+      circle at 20% 80%,
+      rgba(0, 191, 255, 0.3) 0%,
+      transparent 50%
+    ),
+    radial-gradient(
+      circle at 80% 20%,
+      rgba(0, 122, 229, 0.3) 0%,
+      transparent 50%
+    ),
+    linear-gradient(135deg, #001f3f 0%, #003d82 50%, #007ae5 100%);
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.page-transition-loader.loader--active::before {
+  opacity: 1;
+}
+
+.page-transition-loader.loader--active::after {
+  opacity: 1;
+  animation-delay: 1s;
+}
+
+@keyframes bubble-float {
+  0%,
+  100% {
+    transform: translateX(-50%) translateY(0px);
+  }
+  50% {
+    transform: translateX(-50%) translateY(-15px);
+  }
+}
+
+/* Make tiles responsive */
+@media (max-width: 768px) {
+  .tile-emoji {
+    font-size: 2rem;
+    margin-right: 0.5rem;
+  }
+
+  .tile-text {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .tile-emoji {
+    font-size: 1.5rem;
+  }
+
+  .tile-text {
+    font-size: 0.8rem;
+  }
+}
