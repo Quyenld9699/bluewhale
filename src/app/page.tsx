@@ -116,7 +116,7 @@ export default function Home() {
                     🐋
                   </motion.span>
                   <motion.span
-                    className="text-6xl drop-shadow-xl absolute inset-0 flex items-center justify-center animate-spin"
+                    className="text-6xl drop-shadow-xl absolute inset-0 flex items-center justify-center"
                     variants={{
                       initial: {
                         opacity: 0,

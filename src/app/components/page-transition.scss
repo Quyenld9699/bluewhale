@@ -226,19 +226,6 @@
   opacity: 1;
 }
 
-/* Add bubbles effect to loader */
-.page-transition-loader::after {
-  content: "🫧 💧 🫧 💧 🫧";
-  position: absolute;
-  bottom: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-  font-size: 1.5rem;
-  color: rgba(255, 255, 255, 0.7);
-  animation: bubble-float 3s ease-in-out infinite;
-  opacity: 0;
-}
-
 .page-transition-loader.loader--active::after {
   opacity: 1;
   animation-delay: 1s;
