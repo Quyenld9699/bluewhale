@@ -99,9 +99,37 @@ export default function Home() {
               whileHover="hover"
               initial="initial"
             >
+              {" "}
               <div className="relative inline-block">
                 <div className="rotate-y-180">
-                  <span className="text-6xl drop-shadow-xl">🐋</span>
+                  <motion.span
+                    className="text-6xl drop-shadow-xl inline-block"
+                    variants={{
+                      initial: {
+                        opacity: 1,
+                      },
+                      hover: {
+                        opacity: 0,
+                        transition: { duration: 0.3 },
+                      },
+                    }}
+                  >
+                    🐋
+                  </motion.span>
+                  <motion.span
+                    className="text-6xl drop-shadow-xl absolute inset-0 flex items-center justify-center"
+                    variants={{
+                      initial: {
+                        opacity: 0,
+                      },
+                      hover: {
+                        opacity: 1,
+                        transition: { duration: 0.3 },
+                      },
+                    }}
+                  >
+                    🐳
+                  </motion.span>
                 </div>
 
                 <motion.div
@@ -113,8 +141,8 @@ export default function Home() {
                       scale: 1,
                     },
                     hover: {
-                      x: "calc(80px)",
-                      y: "calc(50px)",
+                      x: "calc(50px)",
+                      y: "calc(-60px)",
                       scale: 1.2,
                       transition: {
                         type: "spring",
