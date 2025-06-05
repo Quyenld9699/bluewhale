@@ -1,6 +1,9 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import whale1 from "public/whale/whale1.png";
+import whale2 from "public/whale/whale2.png";
+import Image from "next/image";
 
 interface PageTransitionProps {
   children: React.ReactNode;
@@ -46,27 +49,26 @@ export default function PageTransition({ children }: PageTransitionProps) {
         }`}
       >
         <div className="loader__tile loader__tile--1">
-          <span className="tile-emoji">🐳</span>
+          <Image src={whale2} alt="whale-2" className="size-10 tile-emoji" />
           <span className="tile-text">W</span>
         </div>
         <div className="loader__tile loader__tile--2">
-          <span className="tile-emoji">🐋</span>
+          <Image src={whale1} alt="whale-1" className="size-10 tile-emoji" />
           <span className="tile-text">H</span>
         </div>
         <div className="loader__tile loader__tile--3">
-          <span className="tile-emoji">🐳</span>
+          <Image src={whale2} alt="whale-2" className="size-10 tile-emoji" />
           <span className="tile-text">A</span>
         </div>
         <div className="loader__tile loader__tile--4">
-          <span className="tile-emoji">🐋</span>
+          <Image src={whale1} alt="whale-1" className="size-10 tile-emoji" />
           <span className="tile-text">L</span>
         </div>
         <div className="loader__tile loader__tile--5">
-          <span className="tile-emoji">🐳</span>
+          <Image src={whale2} alt="whale-2" className="size-10 tile-emoji" />
           <span className="tile-text">E</span>
         </div>
       </div>
-      {/* Page Content */}
       <div
         className={`page-content ${
           isTransitioning ? "page-content--hidden" : ""
