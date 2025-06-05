@@ -1,0 +1,62 @@
+/* Video Modal Styles */
+.video-modal {
+  backdrop-filter: blur(8px);
+  animation: modalFadeIn 0.3s ease-out;
+}
+
+.video-modal-content {
+  animation: modalSlideIn 0.4s ease-out;
+}
+
+.video-preview:hover .video-overlay {
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+@keyframes modalFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes modalSlideIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9) translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* Smooth video loading */
+.video-loading {
+  background: linear-gradient(45deg, #1e40af, #3b82f6);
+  background-size: 400% 400%;
+  animation: gradientShift 2s ease infinite;
+}
+
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Enhanced close button */
+.modal-close-button {
+  transition: all 0.2s ease;
+}
+
+.modal-close-button:hover {
+  transform: rotate(90deg);
+  color: #ef4444;
+}

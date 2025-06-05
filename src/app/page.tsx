@@ -4,6 +4,9 @@ import Image from "next/image";
 import TransitionLink from "./components/TransitionLink";
 import { teamMembers } from "src/team-member";
 import "./ocean-animations.scss";
+import whale1 from "public/whale/whale1.png";
+// import whale2 from "public/whale/whale2.png";
+import liveWhale from "public/whale/remove.gif";
 import { motion } from "framer-motion";
 
 export default function Home() {
@@ -69,11 +72,17 @@ export default function Home() {
           <span style={{ "--i": 14 } as React.CSSProperties}>a</span>
           <span style={{ "--i": 15 } as React.CSSProperties}>m</span>
         </div>
-      </motion.div>
+      </motion.div>{" "}
       <div className="absolute inset-0">
-        <div className="whale whale-1 active">🐋</div>
-        <div className="whale whale-2">🐋</div>
-        <div className="whale whale-3">🐋</div>
+        <div className="whale whale-1">
+          <Image src={whale1} alt="whale-1" className="size-15 rotate-y-180" />
+        </div>
+        <div className="whale whale-2">
+          <Image src={whale1} alt="whale-1" className="size-20 rotate-y-180" />
+        </div>
+        <div className="whale whale-3">
+          <Image src={whale1} alt="whale-1" className="size-15 rotate-y-180" />
+        </div>
       </div>
       <div className="absolute inset-0 z-5">
         {teamMembers.map((member, index) => {
@@ -100,39 +109,13 @@ export default function Home() {
               initial="initial"
             >
               <div className="relative inline-block">
-                <div className="rotate-y-180">
-                  <motion.span
-                    className="text-6xl drop-shadow-xl inline-block"
-                    variants={{
-                      initial: {
-                        opacity: 1,
-                      },
-                      hover: {
-                        opacity: 0,
-                        transition: { duration: 0.3 },
-                      },
-                    }}
-                  >
-                    🐋
-                  </motion.span>
-                  <motion.span
-                    className="text-6xl drop-shadow-xl absolute inset-0 flex items-center justify-center"
-                    variants={{
-                      initial: {
-                        opacity: 0,
-                      },
-                      hover: {
-                        opacity: 1,
-                        transition: { duration: 0.3 },
-                      },
-                    }}
-                  >
-                    🐳
-                  </motion.span>
+                <div className="relative">
+                  <motion.div className="size-30 drop-shadow-xl">
+                    <Image src={liveWhale} alt="whale-1" />
+                  </motion.div>
                 </div>
-
                 <motion.div
-                  className="absolute top-1/2 left-1/2.5 transform -translate-x-1/2 -translate-y-1/2 text-lg bg-white/10 rounded-full p-1 shadow-lg"
+                  className="absolute top-1/3 left-1/2.5 transform -translate-x-1/2 -translate-y-1/2 text-lg bg-white/10 rounded-full p-1 shadow-lg"
                   variants={{
                     initial: {
                       x: "-50%",
@@ -140,9 +123,8 @@ export default function Home() {
                       scale: 1,
                     },
                     hover: {
-                      x: "calc(50px)",
-                      y: "calc(-60px)",
-                      scale: 1.2,
+                      x: "calc(70px)",
+                      y: "calc(-70px)",
                       transition: {
                         type: "spring",
                         stiffness: 300,
