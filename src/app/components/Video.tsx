@@ -82,7 +82,7 @@ export function Video() {
                   d="M6 18L18 6M6 6l12 12"
                 />
               </svg>
-            </button>{" "}
+            </button>
             {/* Video Player */}
             <div className="relative rounded-2xl overflow-hidden shadow-2xl border-4 border-blue-400/50">
               <iframe

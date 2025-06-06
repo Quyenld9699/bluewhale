@@ -32,7 +32,6 @@ export default function Home() {
           </div>
         ))}
       </div>
-      {/* Ocean current lines throughout the screen */}
       <div className="absolute inset-0 pointer-events-none z-1">
         {[...Array(8)].map((_, i) => (
           <div
@@ -45,7 +44,7 @@ export default function Home() {
             }}
           ></div>
         ))}
-      </div>{" "}
+      </div>
       <motion.div
         className="absolute inset-0 flex items-center justify-center z-0"
         initial={{ y: "-100%", opacity: 0 }}
@@ -72,7 +71,7 @@ export default function Home() {
           <span style={{ "--i": 14 } as React.CSSProperties}>a</span>
           <span style={{ "--i": 15 } as React.CSSProperties}>m</span>
         </div>
-      </motion.div>{" "}
+      </motion.div>
       <div className="absolute inset-0">
         <div className="whale whale-1">
           <Image src={whale1} alt="whale-1" className="size-15 rotate-y-180" />
