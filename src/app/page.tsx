@@ -14,13 +14,6 @@ export default function Home() {
   const { isAudioEnabled, enableAudio } = useAudio();
   return (
     <div className="min-h-screen relative overflow-hidden">
-      {/* Audio Status Indicator */}
-      {isAudioEnabled && (
-        <div className="fixed top-4 right-4 z-50 bg-green-500/20 backdrop-blur-sm text-white px-4 py-2 rounded-lg border border-green-400/50 flex items-center gap-2">
-          <span className="text-lg animate-pulse">🔊</span>
-          <span className="text-sm">Ocean sounds active</span>
-        </div>
-      )}
       {/* Background Layers */}
       <div className="absolute inset-0 bg-gradient-to-b from-cyan-200 to-slate-900"></div>
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-blue-500 to-transparent opacity-60"></div>
