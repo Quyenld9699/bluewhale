@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useAudio } from "../contexts/AudioContext";
 
 export default function BackgroundAudio() {
@@ -8,8 +8,9 @@ export default function BackgroundAudio() {
   const whaleAudioRef = useRef<HTMLAudioElement | null>(null);
   const tropicalMelodyRef = useRef<HTMLAudioElement | null>(null);
   const whaleIntervalRef = useRef<NodeJS.Timeout | null>(null);
+  const [audioInitialized, setAudioInitialized] = useState(false);
+  const [showAudioPrompt, setShowAudioPrompt] = useState(false);
   const { isVideoPlaying } = useAudio();
-
   useEffect(() => {
     const bubbleAudio = new Audio("/sound/loop-air-bubbles.mp3");
     bubbleAudio.loop = true;
@@ -25,18 +26,52 @@ export default function BackgroundAudio() {
     tropicalMelody.volume = 0.7;
     tropicalMelodyRef.current = tropicalMelody;
 
-    const playBackgroundAudio = async () => {
+    // Try to play background audio, but handle autoplay prevention gracefully
+    const initializeAudio = async () => {
       try {
         await bubbleAudio.play();
         await tropicalMelody.play();
-        console.log("Background bubble audio and tropical melody started");
+        setAudioInitialized(true);
+        console.log("Background audio initialized successfully");
       } catch (error) {
-        console.log("Background audio autoplay was prevented:", error);
+        console.log(
+          "Autoplay prevented - waiting for user interaction:",
+          error
+        );
+        setShowAudioPrompt(true);
       }
     };
 
-    // Cleanup audio when component unmounts
-    playBackgroundAudio();
+    // Add user interaction listener to enable audio
+    const enableAudio = async () => {
+      try {
+        if (!audioInitialized) {
+          await bubbleAudio.play();
+          await tropicalMelody.play();
+          setAudioInitialized(true);
+          setShowAudioPrompt(false);
+          console.log("Audio enabled after user interaction");
+        }
+      } catch (error) {
+        console.log("Failed to enable audio:", error);
+      }
+    };
+
+    // Listen for any user interaction
+    const handleUserInteraction = () => {
+      enableAudio();
+      // Remove listeners after first interaction
+      document.removeEventListener("click", handleUserInteraction);
+      document.removeEventListener("keydown", handleUserInteraction);
+      document.removeEventListener("touchstart", handleUserInteraction);
+    };
+
+    document.addEventListener("click", handleUserInteraction);
+    document.addEventListener("keydown", handleUserInteraction);
+    document.addEventListener("touchstart", handleUserInteraction);
+
+    // Try initial autoplay
+    initializeAudio();
     return () => {
       bubbleAudio.pause();
       bubbleAudio.currentTime = 0;
@@ -47,13 +82,16 @@ export default function BackgroundAudio() {
       if (whaleIntervalRef.current) {
         clearInterval(whaleIntervalRef.current);
       }
+      // Remove event listeners
+      document.removeEventListener("click", handleUserInteraction);
+      document.removeEventListener("keydown", handleUserInteraction);
+      document.removeEventListener("touchstart", handleUserInteraction);
     };
-  }, []);
-
+  }, [audioInitialized]);
   useEffect(() => {
     const playWhaleSound = async () => {
       try {
-        if (whaleAudioRef.current && !isVideoPlaying) {
+        if (whaleAudioRef.current && !isVideoPlaying && audioInitialized) {
           whaleAudioRef.current.currentTime = 0;
           await whaleAudioRef.current.play();
         }
@@ -61,10 +99,12 @@ export default function BackgroundAudio() {
         console.log("Whale sound playback failed:", error);
       }
     };
+
     if (
       bubbleAudioRef.current &&
       whaleAudioRef.current &&
-      tropicalMelodyRef.current
+      tropicalMelodyRef.current &&
+      audioInitialized
     ) {
       if (isVideoPlaying) {
         console.log("Video started - pausing all audio");
@@ -100,7 +140,29 @@ export default function BackgroundAudio() {
         }
       }
     }
-  }, [isVideoPlaying]);
 
-  return null;
+    // Start whale sound interval when audio is initialized and not during video
+    if (audioInitialized && !isVideoPlaying && !whaleIntervalRef.current) {
+      whaleIntervalRef.current = setInterval(() => {
+        playWhaleSound();
+      }, 5000);
+    }
+  }, [isVideoPlaying, audioInitialized]);
+  return (
+    <>
+      {showAudioPrompt && (
+        <div className="fixed top-4 right-4 z-50 bg-blue-500/90 backdrop-blur-sm text-white p-4 rounded-lg shadow-lg border border-blue-300/50 animate-pulse">
+          <div className="flex items-center gap-2">
+            <span className="text-2xl">🔊</span>
+            <div>
+              <p className="font-semibold">Enable Ocean Sounds</p>
+              <p className="text-sm opacity-90">
+                Click anywhere to start audio
+              </p>
+            </div>
+          </div>
+        </div>
+      )}
+    </>
+  );
 }
