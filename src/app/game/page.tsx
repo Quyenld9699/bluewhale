@@ -1,14 +1,14 @@
 "use client";
 
 import Image from "next/image";
-import { teamMembers } from "src/team-member";
+import { fishes } from "src/team-member";
 import "../ocean-animations.scss";
 // import whale2 from "public/whale/whale2.png";
 import liveWhale from "public/whale/remove.gif";
 import { motion } from "framer-motion";
 import TransitionLink from "../components/TransitionLink";
 
-export default function Home() {
+export default function Game() {
   return (
     <div className="min-h-screen relative overflow-hidden">
       {/* Background Layers */}
@@ -77,9 +77,7 @@ export default function Home() {
       <div className="absolute inset-0 z-5">
         {(() => {
           // Create randomized positions and timing before mapping
-          const shuffledMembers = [...teamMembers].sort(
-            () => Math.random() - 0.5
-          );
+          const shuffledMembers = [...fishes].sort(() => Math.random() - 0.5);
           const randomPositions = shuffledMembers.map(() => ({
             top: 15 + Math.random() * 60, // Random between 15% and 75%
             delay: Math.random() * 10, // Random delay 0-10s
@@ -119,47 +117,12 @@ export default function Home() {
                       <Image src={liveWhale} alt="whale-1" />
                     </motion.div>
                   </div>
-                  {/* <motion.div
-                  className="absolute top-1/3 left-1/2.5 transform -translate-x-1/2 -translate-y-1/2 text-lg bg-white/10 rounded-full p-1 shadow-lg"
-                  variants={{
-                    initial: {
-                      x: "-50%",
-                      y: "-50%",
-                      scale: 1,
-                    },
-                    hover: {
-                      x: "calc(70px)",
-                      y: "calc(-70px)",
-                      transition: {
-                        type: "spring",
-                        stiffness: 300,
-                        damping: 25,
-                      },
-                    },
-                  }}
-                >
-                  <Image
-                    src={member.avatar}
-                    alt={member.name}
-                    className="rounded-full object-cover w-[40px] h-[40px] shadow-lg"
-                  />
-                </motion.div> */}
                 </div>
                 <div className="whale-tooltip absolute bg-white/95 rounded-xl px-2 py-2 text-lg shadow-2xl border border-blue-200 opacity-0 transition-all duration-300 z-30">
-                  <div className="font-bold text-blue-800 text-center text-xl whitespace-nowrap">
+                  <div className="font-bold text-blue-800 text-center text-xl whitespace-pre-line">
                     {member.name}
-                  </div>{" "}
-                  <div className="text-blue-600 text-center relative text-lg whitespace-pre-line">
-                    {member.role}
                   </div>
-                  <div className="flex justify-center">
-                    <Image
-                      src={member.image}
-                      alt={member.name}
-                      className="object-cover rounded-lg w-[160px] h-[160px] shadow-lg"
-                    />
-                  </div>
-                </div>{" "}
+                </div>
               </motion.div>
             );
           });

@@ -111,3 +111,50 @@ export const teamMembers: TeamMember[] = [
     image: Bach,
   },
 ];
+
+export const fishes: { id: number; name: string }[] = [
+  {
+    id: 1,
+    name: "Tôi đã từng là cá đúng",
+  },
+  {
+    id: 2,
+    name: "Ngâm mình trong làn nước ây 🎵🎶",
+  },
+  {
+    id: 3,
+    name: "Con bên trái kia kìa",
+  },
+  {
+    id: 4,
+    name: "Cũng trúng nhưng\nmà là trúng gió",
+  },
+  {
+    id: 5,
+    name: "Chọn con khác thì không cơ",
+  },
+  {
+    id: 6,
+    name: "Bạn là người được chọn",
+  },
+  {
+    id: 7,
+    name: "Không có con nào trúng đâu\nbịp đấy",
+  },
+  {
+    id: 8,
+    name: "Cá này không ăn được đâu",
+  },
+  {
+    id: 9,
+    name: "🐋 Chúc mừng bạn đã trúng 🐋",
+  },
+  {
+    id: 10,
+    name: "Chọn sai rồi, hẹ hẹ hẹ",
+  },
+  {
+    id: 11,
+    name: "Hướng 10 giờ",
+  },
+];
