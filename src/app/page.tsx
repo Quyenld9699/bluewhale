@@ -145,8 +145,8 @@ export default function Home() {
               <div className="whale-tooltip absolute bg-white/95 rounded-xl px-2 py-2 text-lg shadow-2xl border border-blue-200 opacity-0 transition-all duration-300 z-30">
                 <div className="font-bold text-blue-800 text-center text-xl whitespace-nowrap">
                   {member.name}
-                </div>
-                <div className="text-blue-600 text-center relative text-lg whitespace-nowrap">
+                </div>{" "}
+                <div className="text-blue-600 text-center relative text-lg whitespace-pre-line">
                   {member.role}
                 </div>
                 <div className="flex justify-center">

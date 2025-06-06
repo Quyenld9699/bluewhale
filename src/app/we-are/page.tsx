@@ -10,8 +10,8 @@ export default function WeAre() {
     "Đổi mới để dẫn đầu",
     "11 thành viên tài năng",
     "Đại dương là sân nhà",
-    "Sáng tạo không giới hạn",
-    "Blue Whale Team!",
+    "Khả năng là vô hạn",
+    "Sóng thì dạt vào bờ\nKhác team thì dạt ra",
   ];
 
   const descriptionText =
@@ -29,16 +29,16 @@ export default function WeAre() {
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-blue-500 to-transparent opacity-60"></div>
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-blue-800 to-slate-900 opacity-80"></div>
       <div className="relative z-10 container mx-auto px-4 py-8">
-        <header className="text-center mb-12">
+        <header className="text-center mb-22 mt-12">
           <div className="mb-8">
             <MorphingText
-              delayTime={1}
+              delayTime={2}
               texts={morphingTexts}
               className="text-white drop-shadow-2xl mt-4"
             />
           </div>
         </header>
-        <section className="bg-white/5 rounded-3xl p-8 mb-12 shadow-2xl">
+        <section className="bg-white/5 rounded-3xl p-8 mb-6 shadow-2xl">
           <h2 className="text-5xl font-bold text-blue-800 mb-6 text-center">
             🌊 Chúng tôi là ai 🌊
           </h2>
