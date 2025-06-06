@@ -53,13 +53,18 @@ export default function MorphingText({
     function setMorph(fraction: number) {
       elts.text2.style.filter = `blur(${Math.min(8 / fraction - 8, 100)}px)`;
       elts.text2.style.opacity = `${Math.pow(fraction, 0.4) * 100}%`;
-
       fraction = 1 - fraction;
       elts.text1.style.filter = `blur(${Math.min(8 / fraction - 8, 100)}px)`;
       elts.text1.style.opacity = `${Math.pow(fraction, 0.4) * 100}%`;
 
-      elts.text1.textContent = texts[textIndex % texts.length];
-      elts.text2.textContent = texts[(textIndex + 1) % texts.length];
+      elts.text1.innerHTML = texts[textIndex % texts.length].replace(
+        /\n/g,
+        "<br>"
+      );
+      elts.text2.innerHTML = texts[(textIndex + 1) % texts.length].replace(
+        /\n/g,
+        "<br>"
+      );
     }
 
     function doCooldown() {
