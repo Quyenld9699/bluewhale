@@ -1,20 +1,24 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import "./video-modal.scss";
 import TransitionLink from "./TransitionLink";
+import { useAudio } from "../contexts/AudioContext";
 
 export function Video() {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const { setIsVideoPlaying } = useAudio();
   const VIDEO_ID = "6EX7tyc7YTA";
 
   const openModal = () => {
     setIsModalOpen(true);
+    setIsVideoPlaying(true);
   };
 
-  const closeModal = () => {
+  const closeModal = useCallback(() => {
     setIsModalOpen(false);
-  };
+    setIsVideoPlaying(false);
+  }, [setIsVideoPlaying]);
 
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
@@ -34,7 +38,7 @@ export function Video() {
       document.removeEventListener("keydown", handleKeyDown);
       document.body.style.overflow = "unset";
     };
-  }, [isModalOpen]);
+  }, [isModalOpen, closeModal]);
 
   const handleModalClick = (e: React.MouseEvent) => {
     if (e.target === e.currentTarget) {
