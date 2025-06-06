@@ -8,10 +8,20 @@ import whale1 from "public/whale/whale1.png";
 // import whale2 from "public/whale/whale2.png";
 import liveWhale from "public/whale/remove.gif";
 import { motion } from "framer-motion";
+import { useAudio } from "./contexts/AudioContext";
 
 export default function Home() {
+  const { isAudioEnabled, enableAudio } = useAudio();
   return (
     <div className="min-h-screen relative overflow-hidden">
+      {/* Audio Status Indicator */}
+      {isAudioEnabled && (
+        <div className="fixed top-4 right-4 z-50 bg-green-500/20 backdrop-blur-sm text-white px-4 py-2 rounded-lg border border-green-400/50 flex items-center gap-2">
+          <span className="text-lg animate-pulse">🔊</span>
+          <span className="text-sm">Ocean sounds active</span>
+        </div>
+      )}
+      {/* Background Layers */}
       <div className="absolute inset-0 bg-gradient-to-b from-cyan-200 to-slate-900"></div>
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-blue-500 to-transparent opacity-60"></div>
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-blue-800 to-slate-900 opacity-80"></div>
@@ -158,7 +168,16 @@ export default function Home() {
           );
         })}
       </div>
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20">
+      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20 flex flex-row gap-4 items-center">
+        {!isAudioEnabled && (
+          <button
+            onClick={enableAudio}
+            className="inline-block px-8 py-4 bg-green-500/20 backdrop-blur-sm hover:bg-green-600/30 text-white font-semibold rounded-xl transition-all duration-300 transform hover:scale-105 hover:shadow-2xl border border-green-400/50 animate-pulse"
+          >
+            🔊
+          </button>
+        )}
+
         <TransitionLink
           href="/we-are"
           className="inline-block opacity-30 px-8 py-4 bg-blue-500/10 backdrop-blur-sm hover:bg-blue-600/10 hover:opacity-100 text-white font-semibold rounded-xl transition-all duration-300 transform hover:scale-105 hover:shadow-2xl border border-blue-400/50"
