@@ -1,19 +1,24 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import "./video-modal.scss";
 import TransitionLink from "./TransitionLink";
+import { useAudio } from "../contexts/AudioContext";
 
 export function Video() {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const { setIsVideoPlaying } = useAudio();
+  const VIDEO_ID = "6EX7tyc7YTA";
 
   const openModal = () => {
     setIsModalOpen(true);
+    setIsVideoPlaying(true);
   };
 
-  const closeModal = () => {
+  const closeModal = useCallback(() => {
     setIsModalOpen(false);
-  };
+    setIsVideoPlaying(false);
+  }, [setIsVideoPlaying]);
 
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
@@ -33,7 +38,7 @@ export function Video() {
       document.removeEventListener("keydown", handleKeyDown);
       document.body.style.overflow = "unset";
     };
-  }, [isModalOpen]);
+  }, [isModalOpen, closeModal]);
 
   const handleModalClick = (e: React.MouseEvent) => {
     if (e.target === e.currentTarget) {
@@ -81,29 +86,17 @@ export function Video() {
                   d="M6 18L18 6M6 6l12 12"
                 />
               </svg>
-            </button>{" "}
+            </button>
             {/* Video Player */}
             <div className="relative rounded-2xl overflow-hidden shadow-2xl border-4 border-blue-400/50">
-              {process.env.NEXT_PUBLIC_YOUTUBE_VIDEO_ID ? (
-                <iframe
-                  className="w-full aspect-video"
-                  src={`https://www.youtube.com/embed/${process.env.NEXT_PUBLIC_YOUTUBE_VIDEO_ID}?autoplay=1&rel=0`}
-                  title="Blue Whales Team Video"
-                  frameBorder="0"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                />
-              ) : (
-                <div className="w-full aspect-video bg-slate-800 flex items-center justify-center text-white">
-                  <div className="text-center">
-                    <div className="text-6xl mb-4">🐋</div>
-                    <p>Video not configured</p>
-                    <p className="text-sm opacity-70 mt-2">
-                      Add NEXT_PUBLIC_YOUTUBE_VIDEO_ID to .env.local
-                    </p>
-                  </div>
-                </div>
-              )}
+              <iframe
+                className="w-full aspect-video"
+                src={`https://www.youtube.com/embed/${VIDEO_ID}?autoplay=1&rel=0`}
+                title="Blue Whales Team Video"
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              />
             </div>
             <div className="absolute -bottom-8 left-0 text-white/70 text-sm">
               Press <kbd className="bg-white/20 px-1 rounded">Esc</kbd> to close

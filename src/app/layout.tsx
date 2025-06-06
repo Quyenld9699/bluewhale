@@ -3,6 +3,8 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import "./components/page-transition.scss";
 import PageTransition from "./components/PageTransition";
+import BackgroundAudio from "./components/BackgroundAudio";
+import { AudioProvider } from "./contexts/AudioContext";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -31,7 +33,10 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <PageTransition>{children}</PageTransition>
+        <AudioProvider>
+          <BackgroundAudio />
+          <PageTransition>{children}</PageTransition>
+        </AudioProvider>
       </body>
     </html>
   );
