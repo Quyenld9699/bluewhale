@@ -52,13 +52,19 @@ export function Video() {
           className="inline-block opacity-30 px-8 py-4 bg-blue-500/10 backdrop-blur-sm hover:bg-blue-600/10 hover:opacity-100 text-white font-semibold rounded-xl transition-all cursor-pointer duration-300 transform hover:scale-105 hover:shadow-2xl border border-blue-400/50"
           onClick={openModal}
         >
-          🌊 Play 🐋
+          🌊 Video 🐋
         </button>
         <TransitionLink
           href="/"
           className="inline-block opacity-30 px-8 py-4 bg-blue-500/10 backdrop-blur-sm hover:bg-blue-600/10 hover:opacity-100 text-white font-semibold rounded-xl transition-all duration-300 transform hover:scale-105 hover:shadow-2xl border border-blue-400/50"
         >
           🌊 Back To Team Member 🐋
+        </TransitionLink>
+        <TransitionLink
+          href="/game"
+          className="inline-block opacity-30 px-8 py-4 bg-blue-500/10 backdrop-blur-sm hover:bg-blue-600/10 hover:opacity-100 text-white font-semibold rounded-xl transition-all duration-300 transform hover:scale-105 hover:shadow-2xl border border-blue-400/50"
+        >
+          🌊 Wanna Play? 🐋
         </TransitionLink>
       </div>
 
