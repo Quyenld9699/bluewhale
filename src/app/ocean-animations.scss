@@ -309,6 +309,7 @@
   font-size: 4rem;
   animation: swim 8s infinite ease-in-out;
   transition: opacity 0.5s;
+  opacity: 0;
 
   &.whale-1 {
     top: 20%;
